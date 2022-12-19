@@ -1,0 +1,62 @@
+<DrugAddScreen>
+    # name: "DrugAddScreen"
+    BoxLayout:
+        id: box
+        size_hint_y: None
+        height: self.minimum_height
+        spacing: 10
+        padding: 10
+        halign: 'center'
+        orientation: 'vertical'
+        font_size: 40
+        pos_hint: {"center_x": .5, "center_y": .5}
+        padding: 25
+        spacing: 25
+
+        MDTextField:
+            id: drug_name_fld
+            # text: "pharmacy_admin"
+            mode: "round"
+            hint_text: "drug name"
+            # size_hint_x: None
+            # width: 600
+            font_size: box.font_size
+            pos_hint: {'center_x': 0.5, "center_y": 0.5}
+        
+        MDTextField:
+            id: drug_atc_fld
+            # text: "pharmacy_admin"
+            mode: "round"
+            hint_text: "drug ATC code"
+            # size_hint_x: None
+            # width: 600
+            font_size: box.font_size
+            max_text_length: 7
+            size_hint: 0.8, .3
+            pos_hint: {'center_x': 0.5, "center_y": 0.5}
+        
+        MDTextField:
+            id: drug_quantity_fld
+            # text: "pharmacy_admin"
+            mode: "round"
+            hint_text: "quantity"
+            # size_hint_x: None
+            # width: 600
+            font_size: box.font_size
+            pos_hint: {'center_x': 0.5, "center_y": 0.5}
+            size_hint_x: 0.5
+
+        MDFlatButton:
+            id: submit_btn
+            text: "Add"
+            md_bg_color: 'orange'
+            font_size: box.font_size
+            size_hint: 0.5  , .3
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            on_press: root.insertData()
+
+    # MDRectangleFlatButton:
+    #     id: drugs_add_submit_btn
+    #     text: "Submit"
+    #     pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    #     on_press: root.insertData()

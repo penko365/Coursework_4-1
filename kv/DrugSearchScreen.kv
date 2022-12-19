@@ -1,0 +1,58 @@
+<DrugSearchScreen>
+    # name: "DrugSearchScreen"
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+        padding: 10
+
+        BoxLayout:
+            id: box
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: 10
+            padding: 10
+            halign: 'center'
+            font_size: 40
+            # padding_y: 70
+
+            MDIconButton:
+                icon: 'magnify'
+                pos_hint: {"center_x": 0.5, "center_y": 0}
+
+            MDTextField:
+                pos_hint: {"center_x": 0.5, "center_y": 0}
+                id: search_field
+                font_size: box.font_size
+                hint_text: 'Search'
+                # on_text: root.set_list_md_icons(self.text, True)
+            
+            MDFlatButton:
+            # id: drugs_add_submit_btn
+                pos_hint: {"center_x": 0.5, "center_y": 0}
+                text: "Go"
+                md_bg_color: 'orange'
+                on_press: root.searchData(root.ids.search_field.text)
+                spacing: 10
+
+        RecycleView:
+            id: rv
+            data: root.rv_data
+            key_viewclass: 'viewclass'
+            key_size: 'height'
+            pos_hint: {"center_x": 0.5, "center_y": 1}
+            padding: 25
+
+            RecycleBoxLayout:
+                padding: dp(20)
+                default_size: None, dp(36)
+                default_size_hint: 1, None
+                # size_hint_y: None
+                height: self.minimum_height
+                pos_hint: {"center_x": 0.5, "center_y": 1}
+                orientation: 'vertical'
+    
+    # MDRectangleFlatButton:
+    #     id: drugs_add_submit_btn
+    #     text: "Submit"
+    #     pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    #     on_press: root.insertData()

@@ -1,0 +1,75 @@
+#: include kv/LoginScreen.kv
+#: include kv/DrugAddScreen.kv
+#: include kv/DrugSearchScreen.kv
+
+<ContentNavigationDrawer>
+
+    MDList:
+
+        OneLineListItem:
+            text: "Drug Add"
+            on_press:
+                root.nav_drawer.set_state("close")
+                root.screen_manager.current = "DrugAddScreen"
+
+        OneLineListItem:
+            text: "Drug Search"
+            on_press:
+                root.nav_drawer.set_state("close")
+                root.screen_manager.current = "DrugSearchScreen"
+
+        # OneLineListItem:
+        #     text: "Screen 2"
+        #     on_press:
+        #         root.nav_drawer.set_state("close")
+        #         root.screen_manager.current = "scr 2"
+
+
+<MainScreen>
+    name: 'MainScreen'
+    MDTopAppBar:
+        id: top_bar
+        pos_hint: {"top": 1}
+        elevation: 4
+        title: ""
+        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+
+    MDNavigationLayout:
+
+        MDScreenManager:
+            id: screen_manager
+
+            DrugAddScreen:
+                name: "DrugAddScreen"
+
+            DrugSearchScreen:
+                name: "DrugSearchScreen"
+
+            MDScreen:
+                name: "scr 2"
+
+                # MDLabel:
+                #     text: "Screen 2"
+                #     halign: "center"
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            radius: (0, 16, 16, 0)
+            
+            # MDNavigationDrawerMenu:
+
+            #     MDNavigationDrawerHeader:
+            #         title: "Phar macy"
+            #         # text: "Header text"
+            #         spacing: "4dp"
+            #         # padding: "12dp", 0, 0, "56dp"
+
+            ContentNavigationDrawer:
+                screen_manager: screen_manager
+                nav_drawer: nav_drawer
+
+<RootWidget>:
+    LoginScreen:
+        name: "LoginScreen"
+    MainScreen:
+        name: "MainScreen"
